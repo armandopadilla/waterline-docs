@@ -16,7 +16,7 @@ return a chainable object.
 
 ## CRUD Methods
 
-### .find( `criteria`, [`callback`] )
+### .find( `criteria`, [`fieldsToReturn`], [`callback`] )
 
 `find` will return an array of records that match the supplied criteria. Criteria can be built
 using the [Query Language](query-language.md).
@@ -24,11 +24,17 @@ using the [Query Language](query-language.md).
 |    Description     | Accepted Data Types             | Required ? |
 |--------------------|---------------------------------|------------|
 |   Find Criteria    |   `{}`,`[{}]`, `string`, `int`  |   Yes      |
+|   Fields to return |   `{}`			       |   No       |
 |     Callback       |   `function`                    |   No       |
 
 ```javascript
 User.find({ name: 'Walter Jr' })
 .exec(function(err, users) {});
+```
+
+```javascript
+User.find({name: 'Walter Jr'}, {fields: ['name', 'age', 'email']})
+.exec(function(err, users){});
 ```
 
 ##### Notes
